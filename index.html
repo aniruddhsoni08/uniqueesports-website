@@ -453,6 +453,9 @@
                             <p class="info">${t.game_type}</p>
                             <div class="meta">
                                 <div class="meta-item"><span>Prize Pool</span><p>${t.prize_pool || 'REDACTED'}</p></div>
+                                <div class="meta-item"><span>Entry Fee</span><p>${t.entry_fee || 'FREE'}</p></div>
+                            </div>
+                            <div class="meta" style="margin-top: 0; padding-top: 10px; border-top: none;">
                                 <div class="meta-item"><span>Deployment</span><p>${new Date(t.start_date).toLocaleDateString()}</p></div>
                             </div>
                             ${btnHtml}

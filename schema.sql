@@ -12,6 +12,7 @@ CREATE TABLE IF NOT EXISTS tournaments (
   start_date DATETIME NOT NULL,
   end_date DATETIME NOT NULL,
   prize_pool VARCHAR(50),
+  entry_fee VARCHAR(50) DEFAULT 'FREE',
   status ENUM('upcoming', 'ongoing', 'completed') DEFAULT 'upcoming',
   youtube_link VARCHAR(500),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
@@ -40,15 +41,13 @@ CREATE TABLE IF NOT EXISTS admin_users (
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Sample Admin User (password: admin123 - CHANGE THIS IN PRODUCTION)
--- Password hash generated with bcryptjs
+-- Sample Admin User (password: Prince77)
 INSERT INTO admin_users (username, password_hash, email) VALUES 
-('admin', '$2a$10$YOIz8kVYVfN7qY8QZ8QZQe8qZ8QZQe8QZ8QZQe8QZ8QZQe8QZ8QZQ', 'admin@uniqueesports.com')
-ON DUPLICATE KEY UPDATE id = id;
+('unique', 'Prince77', 'admin@uniqueesports.com')
+ON DUPLICATE KEY UPDATE username = username;
 
 -- Sample Tournament Data
-INSERT INTO tournaments (name, game_type, description, start_date, end_date, prize_pool, status) VALUES
-('CS:GO Pro League', 'Counter-Strike: Global Offensive', '5v5 Competitive Gaming', '2025-01-15 10:00:00', '2025-01-22 18:00:00', '$50,000', 'upcoming'),
-('Valorant Championship', 'Valorant', 'Elite Valorant Competition', '2025-01-20 09:00:00', '2025-01-28 20:00:00', '$75,000', 'upcoming'),
-('League of Legends Cup', 'League of Legends', '5v5 MOBA Esports Battle', '2025-02-05 08:00:00', '2025-02-15 22:00:00', '$100,000', 'upcoming')
+INSERT INTO tournaments (name, game_type, description, start_date, end_date, prize_pool, entry_fee, status) VALUES
+('CS:GO Pro League', 'Counter-Strike', '5v5 Competitive Gaming', '2025-01-15 10:00:00', '2025-01-22 18:00:00', '₹50,000', '₹500', 'upcoming'),
+('Valorant Championship', 'Valorant', 'Elite Valorant Competition', '2025-01-20 09:00:00', '2025-01-28 20:00:00', '₹75,000', 'FREE', 'upcoming')
 ON DUPLICATE KEY UPDATE id = id;

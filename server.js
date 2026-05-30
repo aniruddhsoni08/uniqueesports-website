@@ -92,22 +92,22 @@ app.get('/api/admin/tournaments', checkAdminAuth, async (req, res) => {
 });
 
 app.post('/api/admin/tournaments', checkAdminAuth, async (req, res) => {
-  const { name, game_type, start_date, end_date, prize_pool, status } = req.body;
+  const { name, game_type, start_date, end_date, prize_pool, entry_fee, status } = req.body;
   try {
     await pool.query(
-      'INSERT INTO tournaments (name, game_type, start_date, end_date, prize_pool, status) VALUES (?, ?, ?, ?, ?, ?)',
-      [name, game_type, start_date, end_date, prize_pool || null, status || 'upcoming']
+      'INSERT INTO tournaments (name, game_type, start_date, end_date, prize_pool, entry_fee, status) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [name, game_type, start_date, end_date, prize_pool || null, entry_fee || 'FREE', status || 'upcoming']
     );
     res.json({ success: true });
   } catch (err) { res.status(500).json({ error: 'Create failed' }); }
 });
 
 app.put('/api/admin/tournaments/:id', checkAdminAuth, async (req, res) => {
-  const { name, status, prize_pool, youtube_link } = req.body;
+  const { name, status, prize_pool, entry_fee, youtube_link } = req.body;
   try {
     await pool.query(
-      'UPDATE tournaments SET name=?, status=?, prize_pool=?, youtube_link=? WHERE id=?',
-      [name, status, prize_pool, youtube_link, req.params.id]
+      'UPDATE tournaments SET name=?, status=?, prize_pool=?, entry_fee=?, youtube_link=? WHERE id=?',
+      [name, status, prize_pool, entry_fee, youtube_link, req.params.id]
     );
     res.json({ success: true });
   } catch (err) { res.status(500).json({ error: 'Update failed' }); }

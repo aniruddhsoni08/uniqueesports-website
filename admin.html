@@ -174,6 +174,11 @@
                             <div class="form-group"><label>Name</label><input type="text" id="q-name" required></div>
                             <div class="form-group"><label>Game</label><input type="text" id="q-game" required></div>
                         </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                            <div class="form-group"><label>Prize Pool (₹)</label><input type="text" id="q-prize" placeholder="e.g. ₹10,000"></div>
+                            <div class="form-group"><label>Entry Fee (₹)</label><input type="text" id="q-fee" placeholder="e.g. ₹500 or FREE"></div>
+                            <div class="form-group"><label>YouTube Link</label><input type="url" id="q-youtube" placeholder="https://youtube.com/..."></div>
+                        </div>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                             <div class="form-group"><label>Start</label><input type="datetime-local" id="q-start" required></div>
                             <div class="form-group"><label>End</label><input type="datetime-local" id="q-end" required></div>
@@ -240,7 +245,7 @@
             <form id="edit-form">
                 <input type="hidden" id="e-id">
                 <div class="form-group"><label>Name</label><input type="text" id="e-name" required></div>
-                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                     <div class="form-group"><label>Status</label>
                         <select id="e-status">
                             <option value="upcoming">Upcoming</option>
@@ -248,7 +253,8 @@
                             <option value="completed">Completed</option>
                         </select>
                     </div>
-                    <div class="form-group"><label>Prize Pool</label><input type="text" id="e-prize"></div>
+                    <div class="form-group"><label>Prize Pool (₹)</label><input type="text" id="e-prize"></div>
+                    <div class="form-group"><label>Entry Fee (₹)</label><input type="text" id="e-fee"></div>
                 </div>
                 <div class="form-group"><label>YouTube Link (Completed Stream)</label><input type="url" id="e-youtube"></div>
                 <div style="display: flex; gap: 10px; margin-top: 30px;">
@@ -341,6 +347,9 @@
             const payload = {
                 name: document.getElementById('q-name').value,
                 game_type: document.getElementById('q-game').value,
+                prize_pool: document.getElementById('q-prize').value,
+                entry_fee: document.getElementById('q-fee').value,
+                youtube_link: document.getElementById('q-youtube').value,
                 start_date: document.getElementById('q-start').value.replace('T', ' '),
                 end_date: document.getElementById('q-end').value.replace('T', ' '),
                 status: 'upcoming'
@@ -387,6 +396,7 @@
             document.getElementById('e-name').value = t.name;
             document.getElementById('e-status').value = t.status;
             document.getElementById('e-prize').value = t.prize_pool || '';
+            document.getElementById('e-fee').value = t.entry_fee || '';
             document.getElementById('e-youtube').value = t.youtube_link || '';
             document.getElementById('edit-modal').style.display = 'block';
         }
@@ -400,6 +410,7 @@
                 name: document.getElementById('e-name').value,
                 status: document.getElementById('e-status').value,
                 prize_pool: document.getElementById('e-prize').value,
+                entry_fee: document.getElementById('e-fee').value,
                 youtube_link: document.getElementById('e-youtube').value
             };
             const sid = getSessionId();
