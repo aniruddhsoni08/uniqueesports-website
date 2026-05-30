@@ -3,7 +3,6 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 const pool = require('./db');
-const bcryptjs = require('bcryptjs');
 const XLSX = require('xlsx');
 const path = require('path');
 const fs = require('fs');
@@ -58,7 +57,7 @@ app.post('/api/register', async (req, res) => {
   }
 });
 
-// Admin Login
+// Admin Login (PLAIN TEXT VERSION)
 app.post('/api/admin/login', async (req, res) => {
   const { username, password } = req.body;
   try {
@@ -66,8 +65,10 @@ app.post('/api/admin/login', async (req, res) => {
     if (users.length === 0) return res.status(401).json({ error: 'Invalid user' });
 
     const user = users[0];
-    const match = await bcryptjs.compare(password, user.password_hash);
-    if (!match) return res.status(401).json({ error: 'Wrong password' });
+    // Simple direct comparison
+    if (password !== user.password_hash) {
+      return res.status(401).json({ error: 'Wrong password' });
+    }
 
     const sessionId = Math.random().toString(36).substr(2, 9);
     sessions[sessionId] = { userId: user.id, username: user.username, timestamp: Date.now() };
