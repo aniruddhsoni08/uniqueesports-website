@@ -1,0 +1,393 @@
+UNIQUE ESPORTS - SITE MAP & USER FLOW
+======================================
+
+┌─────────────────────────────────────────────────────────────────┐
+│                         UNIQUE ESPORTS                          │
+│                    Tournament Platform v1.0                     │
+└─────────────────────────────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+
+🎮 PLAYER PORTAL (PUBLIC)
+═════════════════════════════════════════════════════════════════
+
+URL: http://localhost:5000/
+
+    ┌─────────────────────────────────────────┐
+    │     NAVIGATION BAR (Sticky)             │
+    │  Logo | Home | Tournaments | Register   │
+    │        | About | Contact                │
+    └─────────────────────────────────────────┘
+                        ↓
+    ┌─────────────────────────────────────────┐
+    │          HERO SECTION                   │
+    │    "Level Up Your Game"                 │
+    │  Join the most competitive esports      │
+    │  tournaments and prove your skills      │
+    │                                         │
+    │    [ View Tournaments ]                 │
+    └─────────────────────────────────────────┘
+                        ↓
+    ┌─────────────────────────────────────────┐
+    │   TOURNAMENTS SECTION (Scrollable)      │
+    │                                         │
+    │  ┌──────────────┐  ┌──────────────┐    │
+    │  │   CS:GO      │  │  Valorant    │    │
+    │  │ Pro League   │  │Championship  │    │
+    │  │              │  │              │    │
+    │  │ Prize: $50k  │  │ Prize: $75k  │    │
+    │  │ Status: UPC  │  │ Status: UPC  │    │
+    │  │              │  │              │    │
+    │  │[ Register ]  │  │[ Register ]  │    │
+    │  └──────────────┘  └──────────────┘    │
+    │                                         │
+    │  ┌──────────────┐                      │
+    │  │ League of    │                      │
+    │  │ Legends Cup  │                      │
+    │  │              │                      │
+    │  │ Prize: $100k │                      │
+    │  │ Status: UPC  │                      │
+    │  │              │                      │
+    │  │[ Register ]  │                      │
+    │  └──────────────┘                      │
+    │                                         │
+    │  (Dynamically loaded from database)    │
+    └─────────────────────────────────────────┘
+                        ↓
+    ┌─────────────────────────────────────────┐
+    │   REGISTRATION SECTION                  │
+    │                                         │
+    │  Register for Tournament                │
+    │                                         │
+    │  [ Team Name ]                          │
+    │  [ Email ]                              │
+    │  [ Phone ]                              │
+    │  [ Select Tournament ▼ ]                │
+    │  [ Number of Players ]                  │
+    │  [ Additional Info ]                    │
+    │                                         │
+    │        [ Submit Registration ]          │
+    │                                         │
+    │  ✓ Registration successful!             │
+    │  ✗ Error message (if any)              │
+    └─────────────────────────────────────────┘
+                        ↓
+    ┌─────────────────────────────────────────┐
+    │      ABOUT SECTION                      │
+    │                                         │
+    │  About Unique Esports                  │
+    │                                         │
+    │  Who We Are | Why Choose Us            │
+    │  [Company information & benefits]      │
+    └─────────────────────────────────────────┘
+                        ↓
+    ┌─────────────────────────────────────────┐
+    │          FOOTER                         │
+    │  Copyright © 2024 Unique Esports       │
+    │  Contact: info@uniqueesports.com       │
+    │  Follow us on social media             │
+    └─────────────────────────────────────────┘
+
+═══════════════════════════════════════════════════════════════════
+
+👨‍💼 ADMIN PORTAL (PROTECTED)
+═════════════════════════════════════════════════════════════════
+
+URL: http://localhost:5000/admin
+
+┌─────────────────────────────────────────────────────────┐
+│             LOGIN PAGE (Initial)                        │
+│                                                         │
+│          ⚡ Admin Portal                                │
+│                                                         │
+│          [ Username  ]                                  │
+│          [ Password  ]                                  │
+│                                                         │
+│          [ Login ]                                      │
+│                                                         │
+│  ✗ Invalid Credentials (if failed)                    │
+└─────────────────────────────────────────────────────────┘
+                        ↓ (After Login)
+┌─────────────────────────────────────────────────────────┐
+│  ⚡ ADMIN DASHBOARD | Welcome, admin | [ Logout ]      │
+├─────────────────────────────────────────────────────────┤
+│ SIDEBAR NAVIGATION  │     MAIN CONTENT AREA            │
+│                     │                                   │
+│ 📊 Overview         │  Dashboard Overview              │
+│ 🎮 Tournaments      │  ┌───────┐ ┌────────┐            │
+│ ➕ Create           │  │ 10    │ │ 3      │            │
+│ 👥 Registrations    │  │ Total │ │ Upcom. │            │
+│                     │  └───────┘ └────────┘            │
+│                     │  ┌────────┐ ┌────────┐            │
+│                     │  │ 5      │ │ 2      │            │
+│                     │  │ Ongoing│ │Complete│            │
+│                     │  └────────┘ └────────┘            │
+└─────────────────────────────────────────────────────────┘
+
+            NAVIGATION OPTIONS:
+            
+    📊 OVERVIEW SECTION
+    ├── Total Tournaments (widget)
+    ├── Upcoming (widget)
+    ├── Ongoing (widget)
+    └── Completed (widget)
+
+    🎮 TOURNAMENTS SECTION
+    ├── Table: Name | Game | Date | Status | Actions
+    ├── Edit Button → Edit Modal
+    │   └── Update: Name, Game, Description
+    │       Dates, Status, YouTube Link
+    ├── Delete Button → Confirmation
+    └── View: Tournament details
+
+    ➕ CREATE TOURNAMENT SECTION
+    ├── Tournament Name [ ]
+    ├── Game Type [ ]
+    ├── Prize Pool [ ]
+    ├── Description [ ]
+    ├── Start Date [ ] [ ]
+    ├── End Date [ ] [ ]
+    └── [ Create Tournament ]
+
+    👥 REGISTRATIONS SECTION
+    ├── Select Tournament [ ▼ ]
+    ├── Table: Team | Email | Phone | Players | Date
+    ├── Registration Actions (View/Edit - future)
+    └── [ Export to Excel ] → Download XLSX file
+
+═══════════════════════════════════════════════════════════════════
+
+📊 DATA FLOW DIAGRAM
+═════════════════════════════════════════════════════════════════
+
+PLAYER REGISTRATION FLOW:
+    
+    Player Opens Website
+            ↓
+    Sees Tournaments (Fetched from DB via API)
+            ↓
+    Clicks "Register Now"
+            ↓
+    Fills Registration Form
+            ↓
+    Submits Form (POST /api/register)
+            ↓
+    Data Validated (Client & Server)
+            ↓
+    Stored in Database (registrations table)
+            ↓
+    Success Message Displayed
+            ↓
+    Admin Sees Registration in Dashboard
+
+ADMIN TOURNAMENT MANAGEMENT FLOW:
+    
+    Admin Logs In (POST /api/admin/login)
+            ↓
+    Session Token Generated & Stored
+            ↓
+    Accesses Dashboard (GET /api/admin/tournaments)
+            ↓
+    Tournaments Loaded (With Session Auth)
+            ↓
+    Admin Creates/Edits/Deletes Tournament
+            ↓
+    Changes Reflected Instantly
+            ↓
+    Player Portal Updated Automatically
+            ↓
+    Players See New Tournament Immediately
+
+═══════════════════════════════════════════════════════════════════
+
+🔄 RESPONSIVE BREAKPOINTS
+═════════════════════════════════════════════════════════════════
+
+DESKTOP (1920px+)
+├── Full Layout
+├── 3-column Grid for Tournaments
+└── Sidebar Navigation Visible
+
+LAPTOP (1366px - 1920px)
+├── Optimized Layout
+├── 2-column Grid for Tournaments
+└── Sidebar Navigation Visible
+
+TABLET (768px - 1365px)
+├── Compact Layout
+├── 1-column Grid for Tournaments
+├── Hamburger Menu (Mobile-style)
+└── Adjusted Spacing
+
+MOBILE (320px - 767px)
+├── Full-width Layout
+├── 1-column Grid
+├── Stacked Navigation
+├── Touch-friendly Buttons
+└── Minimal Padding
+
+═══════════════════════════════════════════════════════════════════
+
+🎨 COMPONENT LIBRARY
+═════════════════════════════════════════════════════════════════
+
+BUTTONS:
+├── Primary Button (White bg, Black text)
+│   └── Hover: Black bg, White text
+├── Secondary Button (Black bg, White text)
+│   └── Hover: White bg, Black text
+├── Edit Button (Green)
+├── Delete Button (Red)
+├── Export Button (Blue)
+└── Logout Button (Red)
+
+FORMS:
+├── Input Fields
+├── Select Dropdowns
+├── Text Areas
+├── Date/Time Pickers
+└── Error/Success Messages
+
+CARDS:
+├── Tournament Cards (Hoverable)
+├── Status Badges
+│   ├── Upcoming (Blue)
+│   ├── Ongoing (Orange)
+│   └── Completed (Green)
+└── Data Tables
+
+MODALS:
+├── Edit Tournament Modal
+├── Confirmation Dialogs
+└── Message Notifications
+
+═══════════════════════════════════════════════════════════════════
+
+🔐 AUTHENTICATION FLOW
+═════════════════════════════════════════════════════════════════
+
+LOGIN PROCESS:
+    Enter Credentials
+            ↓
+    Validate (Username exists & Password matches hash)
+            ↓
+    Generate Session ID
+            ↓
+    Store in Server Memory (sessions object)
+            ↓
+    Return Session ID to Client
+            ↓
+    Client Stores in localStorage
+            ↓
+    Redirect to Dashboard
+
+AUTHENTICATED REQUESTS:
+    Make API Request
+            ↓
+    Include x-session-id in Headers
+            ↓
+    Server Validates Session
+            ↓
+    Session Valid? → Allow Request
+            ↓
+    Session Invalid/Expired? → 401 Unauthorized
+            ↓
+    Redirect to Login
+
+LOGOUT PROCESS:
+    Click Logout
+            ↓
+    Clear localStorage
+            ↓
+    Clear Session (server)
+            ↓
+    Redirect to Login Page
+
+═══════════════════════════════════════════════════════════════════
+
+📱 USER ROLES & PERMISSIONS
+═════════════════════════════════════════════════════════════════
+
+PUBLIC USER (Anonymous):
+├── Can view all tournaments
+├── Can view tournament details
+├── Can view completed tournament YouTube links
+├── Can register for tournaments
+└── Cannot access admin panel
+
+ADMIN USER (Authenticated):
+├── Can view all tournaments (admin view)
+├── Can create new tournaments
+├── Can edit tournament details
+├── Can change tournament status
+├── Can add YouTube links
+├── Can delete tournaments
+├── Can view registrations
+├── Can export registrations to Excel
+└── Can manage own profile (future)
+
+═══════════════════════════════════════════════════════════════════
+
+✅ SITE NAVIGATION SUMMARY
+═════════════════════════════════════════════════════════════════
+
+Home (/)
+├── Player Portal
+│   ├── Hero Section
+│   ├── Tournaments Display
+│   ├── Registration Form
+│   ├── About Section
+│   └── Footer
+└── Features:
+    ├── View Tournaments
+    ├── Register for Tournament
+    └── View YouTube Links
+
+Admin (/admin)
+├── Login Page
+├── Dashboard
+│   ├── Overview
+│   ├── Tournament Management
+│   │   ├── View All
+│   │   ├── Create New
+│   │   ├── Edit Existing
+│   │   └── Delete
+│   └── Registration Management
+│       ├── View Registrations
+│       └── Export to Excel
+└── Features:
+    ├── Secure Authentication
+    ├── Real-time Statistics
+    ├── CRUD Operations
+    └── Data Export
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 USER JOURNEY MAP
+═════════════════════════════════════════════════════════════════
+
+FIRST-TIME PLAYER:
+    Discover Website
+    └── Browse Tournaments
+        └── Select Tournament
+            └── Fill Registration Form
+                └── Receive Confirmation
+                    └── Admin Approves
+                        └── Receive Updates
+
+ADMIN SETTING UP PLATFORM:
+    Login to Admin Portal
+    └── Create First Tournament
+        └── Add Tournament Details
+            └── Set Start Date
+                └── Wait for Registrations
+                    └── Monitor Registrations
+                        └── Update Tournament Status
+                            └── Export Registration Data
+
+═══════════════════════════════════════════════════════════════════
+
+Created for: Unique Esports
+Platform Version: 1.0
+Last Updated: 2025
+Status: Production Ready ✅
