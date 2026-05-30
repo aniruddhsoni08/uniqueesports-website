@@ -342,8 +342,10 @@ app.get('/admin', (req, res) => {
   res.sendFile(path.join(__dirname, 'admin.html'));
 });
 
+// Health check for Railway
+app.get('/health', (req, res) => res.send('OK'));
+
 // Start server
-app.listen(PORT, () => {
-  console.log(`🎮 Unique Esports Server running on http://localhost:${PORT}`);
-  console.log(`📊 Admin Panel: http://localhost:${PORT}/admin`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🎮 Unique Esports Server is LIVE on port ${PORT}`);
 });
